@@ -1,4 +1,4 @@
 class Board < ActiveRecord::Base
   has_many :posts
-  attr_accessible :name
+  attr_accessible :name, :title, :content
 end

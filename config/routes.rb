@@ -1,9 +1,8 @@
 Web::Application.routes.draw do
   
   resources :boards do
-
-   resources :posts
-end
+  resources :posts 
+  end
 
 
   # The priority is based upon order of creation:

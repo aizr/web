@@ -1,4 +1,12 @@
 class BoardsController < ApplicationController
+  def show
+     @board = Board.find(params[:id])
+     @posts = Post.all
+    
+     respond_to do |format|
+       format.html
+     end
+  end
   
   def index
     @boards = Board.all
@@ -12,10 +20,7 @@ class BoardsController < ApplicationController
     @board = Board.new
   end
   
-  def show
-    @board = Board.find(params[:id])
-    @posts = @board.posts
-  end
+ 
   
   def edit
     @board = Board.find(params[:id])
