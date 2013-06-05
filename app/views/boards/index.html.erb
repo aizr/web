@@ -1,0 +1,12 @@
+<div>
+	<h1>Boards</h1>
+	<p>Board Name</p>
+<% @boards.each do |b| %>
+
+<%= b.name %> 
+<%= button_to 'Show', board_path %>
+
+
+<% end %>
+</div>
+<%= link_to 'New Board', new_board_path %>
