@@ -35,7 +35,7 @@ class PostsController < ApplicationController
     @board = Board.find(params[:board_id])
     @post = @board.posts.find(params[:id])
     
-    if @post.upate_attributes (params[:post])
+    if @post.update_attributes (params[:post])
     respond_to do |format|
       format.html { redirect_to board_post_path(@board,@post), :notice => 'Post was successfully updated.' }
     end
