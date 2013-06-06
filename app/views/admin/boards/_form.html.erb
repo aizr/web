@@ -1,9 +1,6 @@
-<%= form_for(@board) do |f| %>
 <% if @board.errors.any? %>
-
- <div id="error_explanation">
-
- <h2><%= pluralize(@board.errors.count, "error") %> prohibited this post from being saved:</h2>
+ 	<div id="error_explanation">
+ 	 <h2><%= pluralize(@board.errors.count, "error") %> prohibited this post from being saved:</h2>
  
  <ul>
 <% @board.errors.full_messages.each do |msg| %>
@@ -20,4 +17,3 @@
  <div class ="action">
  <%= f.submit %>
  </div>
- <% end %>
