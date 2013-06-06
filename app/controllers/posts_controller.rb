@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :find_board
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [ :show, :index ]
   def index
     redirect_to board_path(@board)
   end
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
     end
   end
   
-  prorected
+  protected
   def find_board
     @board = Board.find(params[:board_id])
   end
