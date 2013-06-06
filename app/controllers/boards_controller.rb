@@ -5,7 +5,7 @@ class BoardsController < ApplicationController
     
     respond_to do |format|
       format.html
-     end
+    end
   end
   
   def index
@@ -26,6 +26,7 @@ class BoardsController < ApplicationController
   
   def create
     @board = Board.new(params[:board])
+    
     if @board.save
       respond_to do |format|
       format.html { redirect_to :action => :index }
@@ -39,7 +40,6 @@ class BoardsController < ApplicationController
     respond_to do |format|
       if @board.update_attributes(params[:post])
         format.html { redirect_to(@boards) }
-        fornat.html { redirect_to(edit_board_path) }
       end
     end
   end
@@ -50,6 +50,6 @@ class BoardsController < ApplicationController
     
     respond_to do |format|
       format.html { redirect_to(boards_url) }
+      end
     end
-  end  
-end
+  end
