@@ -3,10 +3,10 @@
 	<p>Board Name</p>
 	<% @boards.each do |board| %>
 		<%= board.name %> 
-		<%= link_to "show", board_path(board)%><br />
+		<%= link_to "show", board_path(board) %><br />
 			<% if current_user && current_user.is_admin? %>
 				<%= link_to 'A-Edit', edit_admin_board_path(board) %>
-				<%= link_to 'A-Destroy', adin_boards_path, :confirm => 'Are you sure?', :method =. :delete %>
+				<%= link_to 'A-Destroy', admin_boards_path, :confirm => 'Are you sure?', :method => :delete %>
 			<% end %>
 	<% end %>
 </div>
