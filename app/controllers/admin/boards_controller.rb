@@ -29,9 +29,9 @@ class Admin::BoardsController < ApplicationController
   def create
     @board = Board.new(params[:board])
     
-    if @board.save
-      respond_to do |format|
-      format.html { redirect_to :action => :index }
+    respond_to do |format|
+      if @board.save
+        format.html { redirect_to admin_board_path(@board), :notice => 'Board was successfully created.'}
       end
     end
   end
@@ -41,7 +41,7 @@ class Admin::BoardsController < ApplicationController
     
     respond_to do |format|
       if @board.update_attributes(params[:post])
-        format.html { redirect_to(@boards) }
+        format.html { redirect_to admin_board_path(@board), :notice => 'Board was successfully updated.' }
       end
     end
   end
@@ -51,7 +51,7 @@ class Admin::BoardsController < ApplicationController
     @board.destroy
     
     respond_to do |format|
-      format.html { redirect_to(boards_url) }
+      format.html { redirect_to admin_boards_url }
       end
     end
   end
