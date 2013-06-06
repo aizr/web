@@ -2,8 +2,6 @@
 	<p>Name:</p>
 	<%= @board.name %>
 </div>
-
-
 <p>Listing posts</p>
 <table>
 	<tr>
@@ -13,7 +11,6 @@
 		<th></th>
 		<th></th>
 	</tr>
-	
 	<% @posts.each do |post| %>
 	<tr>
 		<td><%= post.title %></td>
@@ -25,7 +22,6 @@
 	<% end %>
 </table>
 <br />
-
 <%= link_to 'New Post', new_board_post_path(@board) %> |
 <%= link_to 'Edit', edit_board_path(@board) %> |
 <%= link_to 'Back', boards_path %>

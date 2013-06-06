@@ -1,10 +1,10 @@
 class BoardsController < ApplicationController
   def show
-     @board = Board.find(params[:id])
-     @posts = @board.posts
+    @board = Board.find(params[:id])
+    @posts = @board.posts
     
-     respond_to do |format|
-       format.html
+    respond_to do |format|
+      format.html
      end
   end
   
@@ -19,9 +19,7 @@ class BoardsController < ApplicationController
   def new
     @board = Board.new
   end
-  
- 
-  
+    
   def edit
     @board = Board.find(params[:id])
   end
@@ -53,6 +51,5 @@ class BoardsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(boards_url) }
     end
-  end
-  
+  end  
 end

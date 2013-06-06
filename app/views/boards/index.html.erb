@@ -1,13 +1,10 @@
 <div>
 	<h1>Boards</h1>
 	<p>Board Name</p>
-<% @boards.each do |board| %>
-
-<%= board.name %> 
-<%= link_to "show", board_path(board)%><br />
-
-
-<% end %>
+	<% @boards.each do |board| %>
+	<%= board.name %> 
+	<%= link_to "show", board_path(board)%><br />
+	<% end %>
 </div>
 <br />
 <%= link_to 'New Board', new_board_path %>
