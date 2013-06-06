@@ -2,6 +2,10 @@ Web::Application.routes.draw do
   
   devise_for :users
   
+  resources :boards do
+   resources :posts
+  end
+  
   namespace :admin do 
     resources :boards do
      resources :posts
