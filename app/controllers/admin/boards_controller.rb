@@ -1,14 +1,6 @@
 class Admin::BoardsController < ApplicationController
   layout 'admin'
   before_filter :require_is_admin
-  def show
-    @board = Board.find(params[:id])
-    @posts = @board.posts
-    
-    respond_to do |format|
-      format.html
-    end
-  end
   
   def index
     @boards = Board.all
@@ -31,7 +23,7 @@ class Admin::BoardsController < ApplicationController
     
     respond_to do |format|
       if @board.save
-        format.html { redirect_to admin_board_path(@board), :notice => 'Board was successfully created.'}
+        format.html { redirect_to board_path(@board), :notice => 'Board was successfully created.'}
       end
     end
   end
@@ -41,7 +33,7 @@ class Admin::BoardsController < ApplicationController
     
     respond_to do |format|
       if @board.update_attributes(params[:post])
-        format.html { redirect_to admin_board_path(@board), :notice => 'Board was successfully updated.' }
+        format.html { redirect_to board_path(@board), :notice => 'Board was successfully updated.' }
       end
     end
   end
