@@ -1,16 +1,21 @@
 <div>
   <h1>測試 Boards</h1>
   <p>Board Name</p>
-  <% @boards.each do |board| %>
-    <%= board.name %> 
-    <%= link_to "show", board_path(board) %>
-    <% if current_user && current_user.is_admin? %>
-      <%= link_to "A-Edit", edit_admin_board_path(board) %>
-      <%= link_to "A-Destroy", admin_boards_path, :confirm => "Are you sure?", :method => :delete %>
+  <ul>
+    <% @boards.each do |board| %>
+      <li>
+        <%= board.name %> 
+        <%= link_to "show", board_path(board) %>
+        <% if current_user && current_user.is_admin? %>
+          <%= link_to "A-Edit", edit_admin_board_path(board) %>
+          <%= link_to "A-Destroy", admin_boards_path, :confirm => "Are you sure?", :method => :delete %>
+        <% end %>
+      </li>
     <% end %>
-  <% end %>
+  </ul>
 </div>
 
+<%= will_paginate(@boards) %>
 <br />
 
 <% if current_user && current_user.is_admin %>

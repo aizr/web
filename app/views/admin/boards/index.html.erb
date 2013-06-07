@@ -1,13 +1,18 @@
 <div>
   <h1>Boards</h1>
   <p>Board Name</p>
-  <% @boards.each do |board| %>
-    <%= board.name %> 
-    <%= link_to "show", board_path(board)%>
-    <%= link_to "Edit", edit_admin_board_path(board) %>
-    <%= link_to "Delete", admin_board_path(board), :data => { :confirm => "Are you sure?" }, :method => :delete %>
-  <% end %>
+  <ul>
+    <% @boards.each do |board| %>
+      <li>
+        <%= board.name %> 
+        <%= link_to "show", board_path(board)%>
+        <%= link_to "Edit", edit_admin_board_path(board) %>
+        <%= link_to "Delete", admin_board_path(board), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+      </li>
+    <% end %>
+  </ul>
 </div>
-<br />
 
+<%= will_paginate(@boards) %>
+<br />
 <%= link_to "New Board", new_admin_board_path %>

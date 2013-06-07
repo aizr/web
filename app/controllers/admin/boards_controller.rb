@@ -3,7 +3,7 @@ class Admin::BoardsController < ApplicationController
   before_filter :require_is_admin
   
   def index
-    @boards = Board.all
+    @boards = Board.recent.paginate(:page => params[:page], :per_page => 5)
     
     respond_to do |format|
       format.html

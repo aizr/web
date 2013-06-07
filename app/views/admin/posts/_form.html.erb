@@ -9,5 +9,14 @@
 </div>
 
 <div>
+  <%= f.label :upload_image %><br />
+  <%= f.file_field :image %>
+</div>
+
+<div>
+  <%= image_tag @post.image.url(:thumb) %>
+</div>
+
+<div>
   <%= f.submit %>
 </div>
