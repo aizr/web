@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     
     respond_to do |format|
       if @post.save
-        format.html { redirect_to board_post_path(@board, @post), :notice => 'Post was successfully updated.' }
+        format.html { redirect_to board_post_path(@board, @post), :notice => "Post was successfully updated." }
       end
     end
   end
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
     @post.update_attributes(params[:post])
     
     respond_to do |format|
-        format.html { redirect_to board_post_path(@board,@post), :notice => 'Post was successfully updated.' }
+      format.html { redirect_to board_post_path(@board,@post), :notice => "Post was successfully updated." }
     end
   end
   

@@ -1,5 +1,5 @@
 class Admin::BoardsController < ApplicationController
-  layout 'admin'
+  layout "admin"
   before_filter :require_is_admin
   
   def index
@@ -23,7 +23,7 @@ class Admin::BoardsController < ApplicationController
     
     respond_to do |format|
       if @board.save
-        format.html { redirect_to board_path(@board), :notice => 'Board was successfully created.'}
+        format.html { redirect_to board_path(@board), :notice => "Board was successfully created."}
       end
     end
   end
@@ -33,7 +33,7 @@ class Admin::BoardsController < ApplicationController
     @board.update_attributes(params[:board])
     
     respond_to do |format|
-        format.html { redirect_to(board_path, :notice => 'Board was successfully updated.') }
+      format.html { redirect_to(board_path, :notice => "Board was successfully updated.") }
     end
   end
   

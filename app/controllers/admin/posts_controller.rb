@@ -1,5 +1,5 @@
 class Admin::PostsController < ApplicationController
-  layout 'admin'
+  layout "admin"
   before_filter :require_is_admin
   before_filter :find_board
   
@@ -12,7 +12,7 @@ class Admin::PostsController < ApplicationController
     @post.update_attributes(params[:post])
     
     respond_to do |format|
-        format.html { redirect_to board_post_path(@board,@post), :notice => 'Post was successfully updated.' }
+      format.html { redirect_to board_post_path(@board,@post), :notice => "Post was successfully updated." }
     end
   end
   
