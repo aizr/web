@@ -30,11 +30,10 @@ class Admin::BoardsController < ApplicationController
   
   def update
     @board = Board.find(params[:id])
+    @board.update_attributes(params[:board])
     
     respond_to do |format|
-      if @board.update_attributes(params[:post])
-        format.html { redirect_to board_path(@board), :notice => 'Board was successfully updated.' }
-      end
+        format.html { redirect_to(board_path, :notice => 'Board was successfully updated.') }
     end
   end
   
@@ -44,6 +43,6 @@ class Admin::BoardsController < ApplicationController
     
     respond_to do |format|
       format.html { redirect_to admin_boards_url }
-      end
     end
   end
+end

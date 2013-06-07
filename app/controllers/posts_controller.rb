@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_filter :find_board
   before_filter :authenticate_user!, :except => [ :show, :index ]
+  
   def index
     redirect_to board_path(@board)
   end
@@ -10,7 +11,7 @@ class PostsController < ApplicationController
   end
   
   def new
-    @post = @board.posts.build      
+    @post = @board.posts.build
   end
   
   def edit
@@ -23,18 +24,17 @@ class PostsController < ApplicationController
     
     respond_to do |format|
       if @post.save
-        format.html { redirect_to board_posts_path(@board), :notice => 'Post was successfully updated.' }
+        format.html { redirect_to board_post_path(@board, @post), :notice => 'Post was successfully updated.' }
       end
     end
   end
   
   def update
     @post = current_user.posts.find(params[:id])
+    @post.update_attributes(params[:post])
     
     respond_to do |format|
-      if @post.update_attributes(params[:post])
         format.html { redirect_to board_post_path(@board,@post), :notice => 'Post was successfully updated.' }
-      end
     end
   end
   
@@ -48,8 +48,8 @@ class PostsController < ApplicationController
   end
   
   protected
+  
   def find_board
     @board = Board.find(params[:board_id])
   end
-       
 end

@@ -3,13 +3,16 @@ class Admin::PostsController < ApplicationController
   before_filter :require_is_admin
   before_filter :find_board
   
+  def edit
+    @post = Post.find(params[:id])
+  end
+  
   def update
     @post = Post.find(params[:id])
+    @post.update_attributes(params[:post])
     
     respond_to do |format|
-      if @post.update_attributes(params[:post])
         format.html { redirect_to board_post_path(@board,@post), :notice => 'Post was successfully updated.' }
-      end
     end
   end
   
@@ -22,9 +25,9 @@ class Admin::PostsController < ApplicationController
     end
   end
   
-  prorected
+  protected
+  
   def find_board
     @board = Board.find(params[:board_id])
   end
-       
 end
