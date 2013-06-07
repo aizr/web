@@ -6,6 +6,11 @@
 <p>
   <b>Content:</b>
   <%= @post.content %>
+  <% if @post.image %>
+  <p>
+    <%= image_tag @post.image.url(:show) %>
+  </p>
+  <% end %>
 </p>
 
 <% if current_user && current_user.is_admin %>
