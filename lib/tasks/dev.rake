@@ -1,9 +1,9 @@
 require "populator"
+
 namespace :dev do
   desc "Rebuild system"
 
   task :fake => :environment do
-
     Board.populate(10) do |b|
       b.name = Populator.words(3..5)
 
@@ -14,6 +14,7 @@ namespace :dev do
       end
     end
   end
+
   task :build => ["tmp:clear","log:clear","db:drop","db:create","db:migrate"]
-  task :rebuild => ["dev:build","db:seed"]
+  task :rebuild => ["dev:build","db:seed","dev:fake"]
 end
