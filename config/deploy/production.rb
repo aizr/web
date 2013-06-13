@@ -1,4 +1,4 @@
-default_environment["PATH"] = "/usr/local/rbenv/versions:/usr/local/rbenv/shims:/usr/local/rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
+default_environment["PATH"] = "/usr/local/rbenv/versions:/usr/local/rbenv/shims:/usr/local/rbenv/bin:"
 
 set :application, "web"
 set :domain, "ec2-54-249-211-156.ap-northeast-1.compute.amazonaws.com"
@@ -23,7 +23,7 @@ role :app, "#{domain}"
 role :web, "#{domain}"
 role :db, "#{domain}", :primary => true
 
-namespace :deploy do desc "restart"
+namespace :deploy do
   task :restart do
     run "touch #{current_path}/tmp/restart.txt"
   end
