@@ -6,10 +6,14 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'mysql2'
 gem 'devise'
 gem 'will_paginate'
 gem 'paperclip'
 gem 'populator'
+gem 'mysql2'
+gem 'capistrano'
+gem 'capistrano-ext'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
