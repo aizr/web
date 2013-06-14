@@ -1,4 +1,4 @@
-default_environment["PATH"] = "/usr/local/rbenv/versions:/usr/local/rbenv/shims:/usr/local/rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:"
+default_environment["PATH"] = "/usr/local/rbenv/versions:/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
 
 set :application, "web"
 set :domain, "ec2-54-249-211-156.ap-northeast-1.compute.amazonaws.com"
@@ -27,20 +27,10 @@ namespace :deploy do
   task :restart do
     run "touch #{current_path}/tmp/restart.txt"
   end
-
-  task :upload do
-    run "ln -s #{shared_path}/public/system #{current_path}/public/system"
-  end
-end
-
-namespace :assets do
-  task :precompile do
-    run "cd #{current_path}; bundle exec rake asset:precompile"
-  end
 end
 
 desc "Create database.yml and asset packages for production"
 after("deploy:update_code") do
   db_config = "#{shared_path}/config/database.yml.production"
-  run "cp #{db_config} #{release_path}/config/database.yml"
+  run "ln -s #{db_config} #{release_path}/config/database.yml"
 end
