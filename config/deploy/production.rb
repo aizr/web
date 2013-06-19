@@ -23,9 +23,6 @@ role :web, "#{domain}"
 role :db, "#{domain}", :primary => true
 
 namespace :deploy do
-  task :restart do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
 
   task :symlink_db_yml do
     db_config = "#{shared_path}/config/database.yml.production"
