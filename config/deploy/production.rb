@@ -1,6 +1,5 @@
 default_environment["PATH"] = "/usr/local/rbenv/versions:/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
 
-set :application, "web"
 set :domain, "ec2-54-249-211-156.ap-northeast-1.compute.amazonaws.com"
 set :repository, "git@github.com:aizr/web.git"
 
@@ -27,10 +26,12 @@ namespace :deploy do
   task :restart do
     run "touch #{current_path}/tmp/restart.txt"
   end
+
+  task :symlink_db_yml do
+    db_config = "#{shared_path}/config/database.yml.production"
+    run "ln -s #{db_config} #{release_path}/config/database.yml"
+  end
 end
 
-desc "Create database.yml and asset packages for production"
-after("deploy:update_code") do
-  db_config = "#{shared_path}/config/database.yml.production"
-  run "ln -s #{db_config} #{release_path}/config/database.yml"
-end
+before "bundle:install", "deploy:symlink_db_yml"
+after "deploy:restart", "unicorn:restart"
